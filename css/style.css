@@ -1,0 +1,87 @@
+/* Base/mobile-first layout */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #dedede;
+  padding: 5px;
+  margin: 15px;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+}
+
+header h1 {
+  text-align: center;
+  font-size: 2em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+figure {
+  background-color: white;
+  color: black;
+  border: 2px solid blue;
+  padding: 10px;
+}
+
+figure img {
+  width: 100%;
+  height: auto;
+}
+
+/* Tablet view (772px) */
+@media (min-width: 772px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  figure {
+    border-radius: 50%;
+  }
+
+  /* Make last figure span both columns */
+  .grid > figure:last-child {
+    grid-column: span 2;
+  }
+}
+
+/* Large screen view (992px) */
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Every third figure takes up two columns */
+  .grid > figure:nth-child(3n) {
+    grid-column: span 2;
+  }
+
+  figure {
+    border-radius: 0;
+  }
+}
+
+/* Prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Prefers dark color scheme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+  }
+
+  figure {
+    background-color: #333;
+    color: #ffd700; /* light yellow/ gold text */
+    border-color: black;
+  }
+}
